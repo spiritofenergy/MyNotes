@@ -10,27 +10,34 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import com.kodex.mynotes.presentation.navigation.Screens
+import com.kodex.mynotes.presentation.navigation.SetupNavHost
 import com.kodex.mynotes.presentation.ui.theme.MyNotesTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            val navController = rememberNavController()
             MyNotesTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background) {
+                    color = MaterialTheme.colors.background)
+                {
+                    SetupNavHost(navController = navController)
                 }
             }
         }
     }
 }
 
-
-
+/*
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     MyNotesTheme {
+        Screens.MainScreen
     }
-}
+}*/
