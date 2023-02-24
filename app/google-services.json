@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "631731458950",
+    "firebase_url": "https://mynotes-5b731-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "mynotes-5b731",
+    "storage_bucket": "mynotes-5b731.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:631731458950:android:5df75d54b454d6a604d207",
+        "android_client_info": {
+          "package_name": "com.kodex.mynotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "631731458950-okbrora16pe7q6oerc8vjvii4b9mvelg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJUpZ3QNX817Ae-qnasJ_dfk0I9goIrhE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "631731458950-okbrora16pe7q6oerc8vjvii4b9mvelg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

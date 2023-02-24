@@ -1,15 +1,11 @@
 package com.kodex.mynotes.presentation.screens
 
 import android.annotation.SuppressLint
-import android.graphics.drawable.Icon
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
@@ -20,12 +16,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
  import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.kodex.mynotes.R
 import com.kodex.mynotes.domain.model.Note
 import com.kodex.mynotes.presentation.navigation.Screens
 import com.kodex.mynotes.presentation.ui.theme.MyNotesTheme
@@ -56,7 +53,7 @@ fun AddScreen(navController: NavHostController) {
                         .clip(RoundedCornerShape(15.dp))
                         .background(Color(0xFF383838))
                         .clickable {
-                            navController.navigate(Screens.MainScreen.rout)
+                            navController.navigate(Screens.MainScreen.route)
                         }
                 ) {
                     Icon(imageVector = Icons.Filled.ArrowBack,
@@ -64,6 +61,18 @@ fun AddScreen(navController: NavHostController) {
                         tint = Color.White,
                         modifier = Modifier
                             .align(Alignment.Center)
+                    )
+                }
+                IconButton(modifier = Modifier
+                    .width(48.dp)
+                    .height(48.dp),
+                    onClick = {
+                        navController.navigate(Screens.FeedsScreen.route)
+                    }) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_instagram),
+                        contentDescription = "logo",
+                        tint = Color.Unspecified
                     )
                 }
                 Box(
@@ -85,7 +94,7 @@ fun AddScreen(navController: NavHostController) {
                                     backgroundColor = color
                                 )
                             ) {
-                                navController.navigate(Screens.MainScreen.rout)
+                                navController.navigate(Screens.MainScreen.route)
                             }
                         }
                 ) {

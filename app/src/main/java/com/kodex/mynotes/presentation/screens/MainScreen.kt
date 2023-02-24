@@ -1,10 +1,7 @@
 package com.kodex.mynotes.presentation.screens
 
 import android.annotation.SuppressLint
-import android.util.Log
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -25,6 +22,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.kodex.mynotes.domain.model.Note
 import com.kodex.mynotes.presentation.navigation.Screens
+import com.kodex.mynotes.presentation.navigation.Screens.DetailsScreen
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -43,7 +41,7 @@ fun MainScreen(navController: NavController) {
    Scaffold(
        floatingActionButton = {
            FloatingActionButton(onClick = {
-          navController.navigate(Screens.AddScreen.rout)
+          navController.navigate(Screens.AddScreen.route)
            }) {
            Icon(imageVector = Icons.Filled.Add, tint = Color.White, contentDescription = "add" )
        }
@@ -64,7 +62,6 @@ fun MainScreen(navController: NavController) {
                LazyColumn{
                    items(notes){ note ->
                        NoteItem(note = note,
-                           backgroundColor = Color(note.backgroundColor),
                            navController = navController )
                    }
                }
@@ -73,12 +70,12 @@ fun MainScreen(navController: NavController) {
    }
 }
 @Composable
-fun NoteItem(note: Note, navController: NavController, backgroundColor: Color) {
+fun NoteItem(note: Note, navController: NavController,) {
     Card(modifier = Modifier
         .fillMaxWidth()
         .padding(vertical = 2.dp, horizontal = 4.dp)
         .clickable {
-            navController.navigate(Screens.DetailsScreen.rout + "/${note.id}")
+            navController.navigate(DetailsScreen.route + "/${note.id}")
         },
         backgroundColor = Color(note.backgroundColor),
         elevation = 6.dp){

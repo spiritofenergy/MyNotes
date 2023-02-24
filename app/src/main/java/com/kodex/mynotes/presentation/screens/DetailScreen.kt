@@ -14,11 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -31,8 +27,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
-import com.kodex.mynotes.domain.model.Note
 import com.kodex.mynotes.presentation.navigation.Screens
 import com.kodex.mynotes.presentation.ui.theme.MyNotesTheme
 import java.util.*
@@ -69,7 +63,7 @@ import java.util.*
                             .clip(RoundedCornerShape(15.dp))
                             .background(Color(0xFF383838))
                             .clickable {
-                                navController.navigate(Screens.MainScreen.rout)
+                                navController.navigate(Screens.MainScreen.route)
                             }
                     ) {
                         Icon(imageVector = Icons.Filled.ArrowBack,
@@ -109,7 +103,7 @@ import java.util.*
                                 .align(Alignment.Center)
                                 .clickable {
                                     viewModel.deleteNote{
-                                        navController.navigate(Screens.MainScreen.rout)
+                                        navController.navigate(Screens.MainScreen.route)
                                             Toast.makeText(context, "Дело сделано", Toast.LENGTH_SHORT).show()
                                     }
 
@@ -125,7 +119,8 @@ import java.util.*
                 .padding(top = 68.dp)
                 .padding(horizontal = 24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
+                verticalArrangement = Arrangement.Center,
+
 
             ) {
                 Text(
@@ -154,7 +149,7 @@ import java.util.*
     @Composable
     fun PrevDetailScreen() {
     MyNotesTheme {
-        DetailScreen(rememberNavController(),  id = String())
+      //  DetailScreen(rememberNavController(),  id = String())
     }
 }
 

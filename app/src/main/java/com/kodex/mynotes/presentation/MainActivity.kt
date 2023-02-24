@@ -10,9 +10,11 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
 import com.kodex.mynotes.presentation.navigation.Screens
 import com.kodex.mynotes.presentation.navigation.SetupNavHost
+import com.kodex.mynotes.presentation.screens.AuthenticationViewModel
 import com.kodex.mynotes.presentation.ui.theme.MyNotesTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,7 +28,8 @@ class MainActivity : ComponentActivity() {
                 Surface(modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background)
                 {
-                    SetupNavHost(navController = navController)
+                    val authViewModel : AuthenticationViewModel = hiltViewModel()
+                    SetupNavHost(navController = navController,authenticationViewModel = authViewModel)
                 }
             }
         }

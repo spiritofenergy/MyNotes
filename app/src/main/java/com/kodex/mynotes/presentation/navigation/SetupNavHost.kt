@@ -6,31 +6,43 @@ package com.kodex.mynotes.presentation.navigation
  import androidx.navigation.compose.NavHost
  import androidx.navigation.compose.composable
  import androidx.navigation.navArgument
- import com.kodex.mynotes.presentation.screens.AddScreen
- import com.kodex.mynotes.presentation.screens.DetailScreen
- import com.kodex.mynotes.presentation.screens.MainScreen
+ import com.kodex.mynotes.presentation.screens.*
 
 
-sealed class Screens (val rout: String){
-    object MainScreen:Screens(rout = "main_screen")
-    object DetailsScreen:Screens(rout = "detail_screen")
-    object AddScreen:Screens(rout = "add_screen")
+sealed class Screens (val route: String){
+    object MainScreen:Screens(route = "main_screen")
+    object DetailsScreen:Screens(route = "detail_screen")
+    object AddScreen:Screens(route = "add_screen")
+    object FeedsScreen:Screens(route = "feed_screen")
+    object LoginScreen:Screens(route = "login_screen")
+    object SignUpScreen:Screens(route = "signup_screen")
 }
 @Composable
-fun  SetupNavHost(navController : NavHostController) {
+fun  SetupNavHost(navController : NavHostController, authenticationViewModel: AuthenticationViewModel) {
        NavHost(navController = navController,
-       startDestination = Screens.MainScreen.rout
+       startDestination = Screens.MainScreen.route
        ){
-composable(route = Screens.MainScreen.rout){
+composable(route = Screens.MainScreen.route){
   MainScreen(navController =  navController)
 }
-composable(route = Screens.AddScreen.rout){
-    AddScreen(navController =  navController)
+composable(route = Screens.AddScreen.route) {
+    AddScreen(navController = navController)
 }
-composable(route = Screens.DetailsScreen.rout + "/{id}",
+composable(route = Screens.FeedsScreen.route){
+    FeedsScreen(navController = navController)
+}
+composable(route = Screens.LoginScreen.route){
+    LoginScreen(navController = navController, viewModel = authenticationViewModel)
+}
+composable(route = Screens.SignUpScreen.route){
+    SignUpScreen(navController = navController, viewModel = authenticationViewModel)
+}
+composable(route = Screens.DetailsScreen.route + "/{id}",
     arguments = listOf(navArgument("id")
     {type = NavType.StringType})){
-    DetailScreen(navController =  navController, it.arguments?.getString("id"))
+    DetailScreen(navController =  navController,  it.arguments?.getString("id"))
                 }
        }
 }
+
+
