@@ -16,31 +16,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kodex.mynotes.presentation.ui.theme.MyNotesTheme
 
-@Composable
-fun NoteItem(title: String,
-             backgroundColor: Color,
-             modifier: Modifier) {
-    Box(modifier = modifier){
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 4.dp)
-                .clip(RoundedCornerShape(10.dp))
-                .background(backgroundColor)
-        ) {
-            Text(
-                text = title,
-            fontSize = 25.sp,
-            color = Color(0xFF303030),
-            modifier = Modifier
-                .align(Alignment.Center)
-                .padding(vertical = 22.dp)
-            )
-            
-        }
-    }
-}
+
 //@Preview(showBackground = true)
+/*
 @Composable
 fun PrevMainScreen(
     title: String,
@@ -54,4 +32,4 @@ fun PrevMainScreen(
             modifier = Modifier
         )
     }
-}
+}*/
